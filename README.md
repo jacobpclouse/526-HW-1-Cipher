@@ -1,7 +1,6 @@
 # 526-HW-1-Cipher
-> My own cryptographic cipher based off of the 1st homework issued - 526 Cryptography - Spring 2023
-> Written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
-
+> My own cryptographic cipher based off of the 1st homework issued - 526 Cryptography - Spring 2023 
+> - Started on 1/28/2023!
 
 ## Objectives for this Homework:
 Design and implement your own (new) encryption scheme that uses the three operations widely used in classical cryptography: *Substitution*, *Transposition* and *Product*. 
@@ -17,6 +16,7 @@ In addition, show that:
 
 ## My Idea:
 I want to create something unique that uses random/psuedo random input to 'salt' the password in a way that is very hard to break.
+- [x] I want this written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 - [ ] Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles)
 - [ ] Create a Simple GUI for the user to interact with (Tkinter)
 
