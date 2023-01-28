@@ -1,6 +1,6 @@
 # 526-HW-1-Cipher
-My own cryptographic cipher based off of the 1st homework issued - 526 Cryptography - Spring 2023
-Written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
+> My own cryptographic cipher based off of the 1st homework issued - 526 Cryptography - Spring 2023
+> Written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 
 
 ## Objectives for this Homework:
