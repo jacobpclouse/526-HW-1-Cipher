@@ -22,4 +22,9 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 
 
 ## Resources used:
+- Basic writing and formatting syntax Github Markdown: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 - Difference between Substitution Cipher Technique and Transposition Cipher Technique: https://www.geeksforgeeks.org/difference-between-substitution-cipher-technique-and-transposition-cipher-technique/
+- Encyclopaedia Britannica Definitions: 
+- * Substitution cipher: https://www.britannica.com/topic/substitution-cipher
+- * Transposition cipher: https://www.britannica.com/topic/transposition-cipher
+- * Product cipher: https://www.britannica.com/topic/product-cipher
