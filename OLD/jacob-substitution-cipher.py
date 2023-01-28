@@ -37,6 +37,16 @@ def defang_datetime():
     return current_datetime
 
 
+# --- Function for a simple substitution cipher ---
+def simple_substitution():
+    myLogo()
+    print("\nSimple Sub has been activated!\n")
+    input_offset_key = input("What is the offset key you want? ") # getting the offest value from the user
+    input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+    
+    # The algorithm for substitution ciphers basically is: (Plaintext_Letter_Val + Offset_Val) mod 26 = Cipher_Letter_Val 
+
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
