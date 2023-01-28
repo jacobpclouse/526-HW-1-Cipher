@@ -15,9 +15,12 @@ In addition, show that:
 
 
 ## My Idea:
-I want to create something unique that uses random/psuedo random input to 'salt' the password in a way that is very hard to break.
-- [x] I want this written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
-- [ ] Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles)
+I want to create something unique that uses random/psuedo random input to 'salt' the password in a way that is very hard to break. I'm thinking of writing one substitution cipher, then a transposition cipher and then trying to combine the two into a final cipher (and add in some extras to spice it up).
+- [x] I want these written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
+- [ ] Substitution cipher draft has been finished
+- [ ] Transposition cipher draft has been finished
+- [ ] Combine both programs into the final program
+- [ ] Make it uncrackable: Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles)
 - [ ] Create a Simple GUI for the user to interact with (Tkinter)
 
 
