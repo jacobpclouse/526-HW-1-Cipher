@@ -4,7 +4,7 @@
 # Importing Libraries / Modules 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-
+import datetime # used to get the datetime for "defang_datetime" function
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -21,6 +21,16 @@ def myLogo():
     print(" \___/ \__,_|\___\___/|_.__/  \____/|_|\___/ \__,_|___/\___| ")
     print("Dedicated to Peter Zlomek and Harely Alderson III")
 
+
+# --- Function to Defang date time ---
+def defang_datetime():
+    current_datetime = f"_{datetime.datetime.now()}"
+
+    current_datetime = current_datetime.replace(":","_")
+    current_datetime = current_datetime.replace(".","-")
+    current_datetime = current_datetime.replace(" ","_")
+    
+    return current_datetime
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
