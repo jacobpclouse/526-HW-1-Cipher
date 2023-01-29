@@ -1,4 +1,4 @@
-# This Python Program was written on Windows 10 using VScode, your milage may vary based on your OS and configuration.
+# This Python Program was written on Windows 10 and Linux Mint using VScode, your milage may vary based on your OS and configuration.
 
 '''
 This is draft 2: I am writing a preliminary transposition cipher to later incorporate into my final cipher
@@ -9,6 +9,12 @@ This is draft 2: I am writing a preliminary transposition cipher to later incorp
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 import datetime # used to get the datetime for "defang_datetime" function
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Variables
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

@@ -31,3 +31,6 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - * Substitution cipher: https://www.britannica.com/topic/substitution-cipher
 - * Transposition cipher: https://www.britannica.com/topic/transposition-cipher
 - * Product cipher: https://www.britannica.com/topic/product-cipher
+- Python List append(): https://www.programiz.com/python-programming/methods/list/append
+- Python String lower() Method: https://www.geeksforgeeks.org/python-string-lower/
+- Python | Check if a variable is string: https://www.geeksforgeeks.org/python-check-if-a-variable-is-string/

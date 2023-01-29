@@ -15,6 +15,7 @@ import datetime # used to get the datetime for "defang_datetime" function
 # Variables
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+# To convert intial plaintext to number values
 lettersToNumbersDict = {
     'a':0,
     'b':1,
@@ -42,9 +43,21 @@ lettersToNumbersDict = {
     'x':23,
     'y':24,
     'z':25
+    # ' ':'-',
+    # '1':'!',
+    # '2':'@',
+    # '3':'#',
+    # '4':'$',
+    # '5':'%',
+    # '6':'^',
+    # '7':'&',
+    # '8':'*',
+    # '9':'(',
+    # '0':')'
+
 }
 
-
+# To convert finished numbers back into finished ciphertext
 numbersTolettersDict = {
     0:'a',
     1:'b',
@@ -72,6 +85,17 @@ numbersTolettersDict = {
     23:'x',
     24:'y',
     25:'z'
+    # '-':' ',
+    # '!':1,
+    # '@':2,
+    # '#':3,
+    # '$':4,
+    # '%':5,
+    # '^':6,
+    # '&':7,
+    # '*':8,
+    # '(':9,
+    # ')':0
 }
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -106,8 +130,42 @@ def simple_substitution():
     print("\nSimple Sub has been activated!\n")
     input_offset_key = input("What is the offset key you want? ") # getting the offest value from the user
     input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
-    
-    # The algorithm for substitution ciphers basically is: (Plaintext_Letter_Val + Offset_Val) mod 26 = Cipher_Letter_Val 
+
+
+    # Converts the plaintext into corresponding numbers
+    # myPlaintextLettersArray = []
+    ciphertextArray = []
+    for letters in input_plaintext:
+
+        # Checking to see if it is a letter, if not we don't lowercase it
+        # print(letters, letters.isalpha())
+        if (letters.isalpha()) == True: 
+            # print("This is a letter")
+
+            # Lowercasing - prevents issues with capital letters
+            lowerCaseLetter = letters.lower()
+
+            # Why not change it into the cipher text right now if we have the offset?
+            # The algorithm for substitution ciphers basically is: (Plaintext_Letter_Val + Offset_Val) mod 26 = Cipher_Letter_Val 
+            plaintextValue = lettersToNumbersDict[lowerCaseLetter]
+            covertedToCipherValue = (int(plaintextValue) + int(input_offset_key)) % 26
+
+            # We have the cipher value, now we just need to convert it to the ciphertext letter
+            convertedToCipherLetter = numbersTolettersDict[covertedToCipherValue]
+            print(f"Current Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Cipher Value: {covertedToCipherValue}, Cipher Letter: {convertedToCipherLetter}")
+
+            # Append to the array
+            ciphertextArray.append(convertedToCipherLetter)
+
+
+        else:
+            # print('NOT A LETTER')
+            print(f"Current Character: {letters}, Appending to Array as is...")
+            # myPlaintextLettersArray.append(lettersToNumbersDict[letters])
+            ciphertextArray.append(letters)
+
+    print(f"Output Array: {ciphertextArray}")
+
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -115,5 +173,22 @@ def simple_substitution():
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
-print(f"current dict: {lettersToNumbersDict}")
-print(lettersToNumbersDict['a'])
+# myTest = 'Plan 9 From outer Space'
+# myPlaintextLettersArray = []
+# print(myTest, myTest.isalpha())
+# for letters in myTest:
+#     # Checking to see if it is a letter, if not we don't lowercase it
+#     print(letters, letters.isalpha())
+#     if (letters.isalpha()) == True: 
+#         print("This is a letter")
+#         lowerCaseLetter = letters.lower()
+#     else:
+#         print('NOT A LETTER')
+#         lowerCaseLetter = letters
+
+#     print(f"Current Character: {lowerCaseLetter}, Letter Value: {lettersToNumbersDict[lowerCaseLetter]}")
+#     myPlaintextLettersArray.append(lettersToNumbersDict[lowerCaseLetter])
+
+# print(f"Output Array: {myPlaintextLettersArray}")
+
+simple_substitution()
