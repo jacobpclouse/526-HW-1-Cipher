@@ -124,8 +124,17 @@ def defang_datetime():
     return current_datetime
 
 
-# --- Function for a simple substitution cipher ---
-def simple_substitution():
+# --- Function to Write Data to a file ---
+def write_to_file(filename,plaintextOrCipherText,dataToWrite):
+    outboundFile = open(f"{filename}.txt", "w")
+    lesGoBoi = outboundFile.write(f'{plaintextOrCipherText} : {dataToWrite}')
+    outboundFile.close()
+
+
+# --- Function to ENCRYPT a simple substitution cipher ---
+def encrypt_substitution():
+    currentTime = defang_datetime()
+    print(f"Current Date/Time: {currentTime}")
     myLogo()
     print("\nSimple Sub has been activated!\n")
     input_offset_key = input("What is the offset key you want? ") # getting the offest value from the user
@@ -164,31 +173,73 @@ def simple_substitution():
             # myPlaintextLettersArray.append(lettersToNumbersDict[letters])
             ciphertextArray.append(letters)
 
-    print(f"Output Array: {ciphertextArray}")
+    print(f"Output Array: {ciphertextArray}\n")
+
+    # Turn array into a string
+    cipherText = ''
+    for characters in ciphertextArray:
+        cipherText += characters
+    
+    print(f"Ciphertext: {cipherText}")
+    # Writing Data to a file
+    write_to_file(f"Subsitution_Encryption_{currentTime}","Sub CipherText",cipherText)
 
 
+# --- Function to DECRYPT a simple substitution cipher ---
+def decrypt_substitution():
+    currentTime = defang_datetime()
+    print(f"Current Date/Time: {currentTime}")
+    myLogo()
+    print("\nDecrypt Sub has been activated!\n")
+
+    input_offset_decrypt_key = input("What is the offset key set to? ") # getting the offest decrypt key from the user
+    input_ciphertext = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+
+    # Converts the ciphertext into corresponding numbers
+    PlaintextArray = []
+    for letters in input_ciphertext:
+
+        # Checking to see if it is a letter, if not we don't lowercase it
+        # print(letters, letters.isalpha())
+        if (letters.isalpha()) == True: 
+            # Lowercasing - prevents issues with capital letters
+            lowerCaseLetter = letters.lower()
+
+            # Why not change it into the plain text right now if we have the offset?
+            # If we reverse the algorithm for substitution, the forumla is: (Cipher_Letter_Val - Offset_Val) mod 26 = Orig_Plaintext_Letter_Val 
+            cipherValue = lettersToNumbersDict[lowerCaseLetter]
+            covertedToPlaintextValue = (int(cipherValue) - int(input_offset_decrypt_key)) % 26
+
+            # We have the plaintext value, now we just need to convert it to the original letter
+            convertedToPlaintextLetter = numbersTolettersDict[covertedToPlaintextValue]
+            print(f"Current Cipher Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Plaintext Value: {covertedToPlaintextValue}, Original Letter: {convertedToPlaintextLetter}")
+
+            # Append to the array
+            PlaintextArray.append(convertedToPlaintextLetter)
+
+
+        else:
+            print(f"Current Character: {letters}, Appending to Array as is...")
+            PlaintextArray.append(letters)
+
+    print(f"Output Array: {PlaintextArray}\n")
+
+    # Turn array into a string
+    plainText = ''
+    for characters in PlaintextArray:
+        plainText += characters
+    
+    print(f"Ciphertext: {plainText}")
+
+    # Writing Data to a file
+    write_to_file(f"Subsitution_Decryption_{currentTime}","Retrieved Plaintext",plainText)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+# Encryption function
+# encrypt_substitution()
 
-# myTest = 'Plan 9 From outer Space'
-# myPlaintextLettersArray = []
-# print(myTest, myTest.isalpha())
-# for letters in myTest:
-#     # Checking to see if it is a letter, if not we don't lowercase it
-#     print(letters, letters.isalpha())
-#     if (letters.isalpha()) == True: 
-#         print("This is a letter")
-#         lowerCaseLetter = letters.lower()
-#     else:
-#         print('NOT A LETTER')
-#         lowerCaseLetter = letters
-
-#     print(f"Current Character: {lowerCaseLetter}, Letter Value: {lettersToNumbersDict[lowerCaseLetter]}")
-#     myPlaintextLettersArray.append(lettersToNumbersDict[lowerCaseLetter])
-
-# print(f"Output Array: {myPlaintextLettersArray}")
-
-simple_substitution()
+# Decryption function
+decrypt_substitution()

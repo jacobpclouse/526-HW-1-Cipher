@@ -34,3 +34,4 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - Python List append(): https://www.programiz.com/python-programming/methods/list/append
 - Python String lower() Method: https://www.geeksforgeeks.org/python-string-lower/
 - Python | Check if a variable is string: https://www.geeksforgeeks.org/python-check-if-a-variable-is-string/
+- How to Write String to Text File in Python?: https://pythonexamples.org/python-write-string-to-text-file/

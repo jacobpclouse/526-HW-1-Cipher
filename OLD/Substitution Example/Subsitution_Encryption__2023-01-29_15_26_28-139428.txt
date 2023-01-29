@@ -1,0 +1,3 @@
+Sub CipherText : m vieppc aerx xs hmi
+
+(offset key is 4)
