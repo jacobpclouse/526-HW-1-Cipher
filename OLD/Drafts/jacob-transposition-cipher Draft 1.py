@@ -95,10 +95,19 @@ def encrypt_transposition():
     print("\nSimple Transposition has been activated!\n")
 
     # The four Arrays used to encrypt a transposition cipher, in here because I don't want the data to remain outside this function
+    # Array0 = []
+    # Array1 = []
+    # Array2 = []
+    # Array3 = []
+
     ListOfLists = [[],[],[],[]]
 
     # getting plaintext from the user
     input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+
+    # # Getting Length of the String
+    # length_of_input = len(input_plaintext)
+    # print(f"Length of Input: {length_of_input}")
 
     # pushing that plaintext into arrays
     for index,character in enumerate(input_plaintext):
@@ -111,41 +120,63 @@ def encrypt_transposition():
 
         # if mod is equal to 0, we move to List 0
         if (current_mod_of_char == 0):
+            # Array0.append(character)
             ListOfLists[0].append(character)
 
         # if mod is equal to 1, we move to List 1
         elif (current_mod_of_char == 1):
+            # Array1.append(character)
             ListOfLists[1].append(character)
 
         # if mod is equal to 2, we move to List 2
         elif (current_mod_of_char == 2):
+            # Array2.append(character)
             ListOfLists[2].append(character)
 
         # mod has to be equal to 3, we move to List 3
         else:
+            # Array3.append(character)
             ListOfLists[3].append(character)
 
     print(ListOfLists)
+    # for index,elements in enumerate(Array0):
+    #     print(f"element: {elements}")
 
-    # getting key from user
-    input_column_order_key = get_combo_of_1234()
+
+    input_column_order_key = input("What is the column order you want? \nNOTE: You must only use the numbers 4,3,2,1 and only use them once: ") # getting the column order value from the user
     
-    print(input_column_order_key)
+    # make sure that the length of the key is not greater than 4
+    length_of_key = len(input_column_order_key)
+    # valid_chars_only = True
+    # for character_valid in input_column_order_key:
+    #     while character_valid not in [4,3,2,1]:
+    #         valid_chars_only = False
+    
+    # while length_of_key != 4 or valid_chars_only == False:
+    while length_of_key != 4:
+        input_column_order_key = input("The key needs to be 4 characters long, no exceptions.\nAlso it must only contain 4,3,2,1\nList a new 4 character key with 4,3,2,1: ")
+        
+        # rechecking inputs
+        length_of_key = len(input_column_order_key)
+        # valid_chars_only = True
+        # for character_valid in input_column_order_key:
+        #     while character_valid not in [4,3,2,1]:
+        #         valid_chars_only = False
 
 
     # Iterating through the array and creating the ciphertext
     # getting ciphertext ready
     outbound_ciphertext = ''
 
-    # # appending arrays to ciphertext
-    # for numbers in input_column_order_key:
-    #     print(f"Appending List {numbers}")
-    #     print(f"This is ListOfLists{numbers}, or: {ListOfLists[numbers]}")
-    #     outbound_ciphertext.join(ListOfLists[int(numbers)]) 
+    # appending arrays to ciphertext
+    for numbers in input_column_order_key:
+        print(f"Appending List {numbers}")
+        print(f"This is ListOfLists{numbers}, or: {ListOfLists[numbers]}")
+        outbound_ciphertext.join(ListOfLists[int(numbers)]) 
 
     
-    # # printing out final ciphertext and saving it to a file
-    # print(outbound_ciphertext)
+    # printing out final ciphertext and saving it to a file
+    print(outbound_ciphertext)
 
 
 # --- Function to DECRYPT a simple substitution cipher ---
@@ -160,8 +191,9 @@ def decrypt_transposition():
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-encrypt_transposition()
-# thisVal = get_combo_of_1234()
+
+# encrypt_transposition()
+thisVal = get_combo_of_1234()
 
 
-# print(f"THIS COMBO IS {thisVal}")
+print(f"THIS COMBO IS {thisVal}")
