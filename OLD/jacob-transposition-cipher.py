@@ -85,8 +85,6 @@ def get_combo_of_1234():
     return desired_combo_key
 
 
-
-
 # --- Function to ENCRYPT a simple transposition cipher ---
 def encrypt_transposition():
     currentTime = defang_datetime()
@@ -130,22 +128,31 @@ def encrypt_transposition():
     # getting key from user
     input_column_order_key = get_combo_of_1234()
     
-    print(input_column_order_key)
+    # print(input_column_order_key)
 
 
     # Iterating through the array and creating the ciphertext
     # getting ciphertext ready
     outbound_ciphertext = ''
 
-    # # appending arrays to ciphertext
-    # for numbers in input_column_order_key:
-    #     print(f"Appending List {numbers}")
-    #     print(f"This is ListOfLists{numbers}, or: {ListOfLists[numbers]}")
-    #     outbound_ciphertext.join(ListOfLists[int(numbers)]) 
+    # appending arrays to ciphertext
+    for numbers in input_column_order_key:
+        print(f"Appending List {(numbers - 1)} as value was: {numbers}")
+        print(f"This is ListOfLists{(numbers - 1)}, or: {ListOfLists[(numbers - 1)]}")
+
+        # Changing list to string
+        stringify_this = ''.join(ListOfLists[int((numbers - 1))])
+        print(f"Stringifying: {stringify_this}")
+        outbound_ciphertext += stringify_this
+
+        # showing what the current ciphertext is
+        print(f"Current Ciphertext: {outbound_ciphertext}")
 
     
-    # # printing out final ciphertext and saving it to a file
-    # print(outbound_ciphertext)
+    # printing out final ciphertext
+    print(outbound_ciphertext)
+    # Writing Data to a file
+    write_to_file(f"Transposition_Encryption_{currentTime}","Trans CipherText",outbound_ciphertext)
 
 
 # --- Function to DECRYPT a simple substitution cipher ---

@@ -36,3 +36,5 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - Python | Check if a variable is string: https://www.geeksforgeeks.org/python-check-if-a-variable-is-string/
 - How to Write String to Text File in Python?: https://pythonexamples.org/python-write-string-to-text-file/
 - Python For loop get index: https://stackoverflow.com/questions/15684605/python-for-loop-get-index
+- How to test that variable is not equal to multiple things?: https://stackoverflow.com/questions/12553609/how-to-test-that-variable-is-not-equal-to-multiple-things
+- How to Convert List to String in Python?: https://www.simplilearn.com/tutorials/python-tutorial/list-to-string-in-python#:~:text=To%20convert%20a%20list%20to%20a%20string%2C%20use%20Python%20List,and%20return%20it%20as%20output.
