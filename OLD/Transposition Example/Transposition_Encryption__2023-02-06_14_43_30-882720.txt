@@ -1,3 +1,0 @@
-Trans CipherText : s siseehiwmt ao
-
-Your key is going to be: [4, 3, 2, 1]
