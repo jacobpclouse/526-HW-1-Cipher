@@ -124,7 +124,7 @@ def defang_datetime():
 # --- Function to Write Data to a file ---
 def write_to_file(filename,plaintextOrCipherText,dataToWrite):
     outboundFile = open(f"{filename}.txt", "w")
-    lesGoBoi = outboundFile.write(f'{plaintextOrCipherText} : {dataToWrite}')
+    lesGoBoi = outboundFile.write(f'{plaintextOrCipherText} : "{dataToWrite}"')
     outboundFile.close()
 
 
@@ -438,4 +438,11 @@ def decrypt_transposition():
 # 6th: make a video on this explaining it from start to finish
 
 
+# test sub -- both working, just need to have it return value for **encryption** instead of making file
+#encrypt_substitution()
+#decrypt_substitution()
 
+
+# test trans -- both working, just need to have it return value for **decrpytion** instead of making file
+#encrypt_transposition()
+#decrypt_transposition()
