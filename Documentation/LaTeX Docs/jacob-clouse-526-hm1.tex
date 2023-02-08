@@ -28,20 +28,43 @@ To find the difference between the two we can subtract the first from the second
 \begin{align}
     17&=(a * 19 + b) mod 26 \label{eqn:Last-Name}\\  
 	0&=(a *  4 + b)mod26 \label{eqn:First-Name} 
-\shortintertext{Subtracting \eqref{eqn:First-Name} from \eqref{eqn:Last-Name} yields} 
+\shortintertext{Subtracting \eqref{eqn:First-Name} from \eqref{eqn:Last-Name} yields:} 
 	\textbf{17 = 15a  mod  26}  
 \end{align}
 
 
-%\begin{math}	
-%	17 = (a * 19 + b)  mod  26 \newline
-%	0 = (a *  4 + b)   mod  26 \newline
-%	-- \newline
-%	17 = 15a  mod  26	\newline
-%\end{math}
-%\begin{align}   17 = (a * 19 + b) mod 26\end{align}
-%\begin{align}-0 = (a *  4 + b) mod 26\end{align}
-%This ends up giving us: \textbf{17 = 15a  mod  26}	
+\textit{We now need to take this function and solve for a}. To do this, we need to move the mod operator over in (3) to the left hand side. We now have: 
+\begin{align}
+17 mod 26 = 15a
+\end{align}
+% BELOW: ASK HIM IF YOUR EXPLAINATION IS CORRECT!!!!
+We use the Euclidean Algorithm to find the Greatest Common Divisor (or GCD) of 15 and 26 and check to see if its equal to 1. It turns out that the GCD between 15 and 26 is 1. 
+\begin{align}
+\shortintertext{So this becomes:}
+17*15^{-1} mod 26 = 1
+\shortintertext{Then:}
+17*7 mod 26 = a \\
+119 mod 26 = a
+\shortintertext{Finally, we find that:}
+\textbf{a = 15}\end{align}
+\\
+\\
+\textit{Now we need to solve for b.} We do this by substituting in our a value for one of our equations:\newline
+\begin{align}
+17 = (\textbf{15} * 19 + b) mod 26
+\shortintertext{Then:}
+17 = 285 + b mod 26\\
+(17 - 285 ) mod 26 = b\\
+-268 mod 26\\
+\shortintertext{Finally, we find that:}
+\textbf{b = 18}
+\end{align}
+
+\textit{To check our work} we need to substitute b into the equation and solve it:
+\begin{align}
+	(15(19) + 18) mod 26
+\end{align}
+This is equal to 17, which is the value we calculated previously. So it works!
 
 
 
