@@ -1,4 +1,4 @@
-# This Python Program was written on Windows 10 using VScode, your milage may vary based on your OS and configuration.
+# This Python Program was written on Windows 10 and Linux Mint using VScode, your milage may vary based on your OS and configuration.
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Importing Libraries / Modules 
@@ -446,3 +446,9 @@ def decrypt_transposition():
 # test trans -- both working, just need to have it return value for **decrpytion** instead of making file
 #encrypt_transposition()
 #decrypt_transposition()
+
+
+'''
+IDEA: why not do a mode where you can run through a custom number of ciphers? 
+Maybe in addition to the original set number
+'''

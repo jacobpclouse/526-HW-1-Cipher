@@ -1,4 +1,4 @@
-# This Python Program was written on Windows 10 using VScode, your milage may vary based on your OS and configuration.
+# This Python Program was written on Windows 10 and Linux Mint using VScode, your milage may vary based on your OS and configuration.
 
 '''
 This is draft 1: I am writing a preliminary substituion cipher to later incorporate into my final cipher
