@@ -1,30 +1,48 @@
 \documentclass{article}
 \author{Jacob Clouse}
-\title{ICSI 526- Homework 1 - Spring 2023}
+\title{ICSI 526 - Spring 2023 - Homework 1}
+
+
 \usepackage[margin=0.5in]{geometry}
+%\usepackage{amsmath}
+\usepackage{mathtools}
+
+
 \begin{document}
 	
 \maketitle	
 	
 \section{\underline{ - Question 1a Answer:}}
+First of all, this IS breakable. Here is my explanation of why: \\
+
 For my First name: J A C O B, I found that the combine total is 9 + 0 + 2 + 14 + 1. (9 + 0 + 2 + 14 + 1) is equal to 26, so we use (26) mod 26 which is equal to 0. So in C1 = (a * P1 + b) mod 26, C1 is equal to 0 (for the most common letter E). E is normally valued at 4 in plaintext. \newline
 
 
 For my Last name: C L O U S E, I found that the combine total is 2 + 11 + 14 + 20 + 18 + 4. (2 + 11 + 14 + 20 + 18 + 4) is equal to 69, so we use (69) mod 26 which is equal to 17. So in C2 = (a * P2 + b) mod 26, C2 is equal to 17 (for the second most common letter T). T is normally valued at 19 in plaintext. \newline
 
 Here are the equations: \newline
-E / First name: \textbf{C1 = (a * P1 + b) mod 26} \textit{OR} \textbf{4 = (a * 0 + b) mod 26} \newline
-T / Last name:  \textbf{C2 = (a * P2 + b) mod 26} \textit{OR} \textbf{4 = (a * 0 + b) mod 26} \newline
+For E / First name: \textbf{C1 = (a * P1 + b) mod 26} \textit{OR} \textbf{0 = (a * 4 + b) mod 26} \newline
+For T / Last name:  \textbf{C2 = (a * P2 + b) mod 26} \textit{OR} \textbf{17 = (a * 19 + b) mod 26} \newline
+
+To find the difference between the two we can subtract the first from the second: 
+\begin{align}
+    17&=(a * 19 + b) mod 26 \label{eqn:Last-Name}\\  
+	0&=(a *  4 + b)mod26 \label{eqn:First-Name} 
+\shortintertext{Subtracting \eqref{eqn:First-Name} from \eqref{eqn:Last-Name} yields} 
+	\textbf{17 = 15a  mod  26}  
+\end{align}
 
 
-To find the difference between the two we can subtract the first from the second:
+%\begin{math}	
+%	17 = (a * 19 + b)  mod  26 \newline
+%	0 = (a *  4 + b)   mod  26 \newline
+%	-- \newline
+%	17 = 15a  mod  26	\newline
+%\end{math}
+%\begin{align}   17 = (a * 19 + b) mod 26\end{align}
+%\begin{align}-0 = (a *  4 + b) mod 26\end{align}
+%This ends up giving us: \textbf{17 = 15a  mod  26}	
 
-\begin{math}
-	17 = (a * 19 + b)  mod  26
-	0 = (a *  4 + b)   mod  26
-	--
-	17 = 15a  mod  26	
-\end{math}
 
 
 \section{\underline{ - Question 1b Answer:}}
