@@ -96,15 +96,8 @@ def get_remainder(input_string):
     return int(number_of_spaces_to_add)
 
 
-# --- Function to split up a string into 4 equal parts ---
-def split_my_string_in_4(string):
-    length = len(string) # getting length
-    part_length = length // 4
-    return [string[i:i + part_length] for i in range(0, length, part_length)] # returning each piece in an array
 
-
-
-# --- Function to ENCRYPT a simple transposition cipher --- do a custom number of rails
+# --- Function to ENCRYPT a simple transposition cipher ---
 def encrypt_transposition():
     currentTime = defang_datetime()
     print(f"Current Date/Time: {currentTime}")
@@ -185,7 +178,7 @@ def encrypt_transposition():
     write_to_file(f"Transposition_Encryption_{currentTime}","Trans CipherText",outbound_ciphertext)
 
 
-# --- Function to DECRYPT a simple substitution cipher --- do a custom number of rails
+# --- Function to DECRYPT a simple substitution cipher ---
 def decrypt_transposition():
     currentTime = defang_datetime()
     print(f"Current Date/Time: {currentTime}")
@@ -193,57 +186,13 @@ def decrypt_transposition():
     print("\nDecrypt Transposition has been activated!\n")
 
     # The four Arrays used to decrypt a transposition cipher, in here because I don't want the data to remain outside this function
-    ciphertextList = []
-    plaintextList = []
-    
+    ListOfLists = [[],[],[],[]]
+
     # getting plaintext from the user
     input_ciphertext = input("\nWhat is the ciphertext message you want to decode? ") # getting the ciphertext to decrypt
-    split_up_ciphertext = split_my_string_in_4(input_ciphertext)
-
-    #number of columns in each column
-    numOfCharsInEachColumn = int(len(input_ciphertext) / 4)
-    print(numOfCharsInEachColumn)
-    for jakes in range(numOfCharsInEachColumn):
-        plaintextList.append([])
-
-    print(f"We should have {numOfCharsInEachColumn} in plaintextList = {plaintextList}")
-
-    print(f"Splitting up Plaintext: {split_up_ciphertext}")
-
-    # getting key from user
-    input_column_order_key = get_combo_of_1234()
-
-    # append each array in order
-    for nums in input_column_order_key:
-        ciphertextList.append(split_up_ciphertext[(nums - 1)])
-
-    print(f"After Re order: {ciphertextList}")
-
-    #adding array
-    for index,arrays in enumerate(ciphertextList):
-        print(f"Index: {index}, Array: {arrays}")
-        for index2,character in enumerate(arrays):
-            print(f"Index2: {index2}, Array: {character}")
-
-            # if (index2 % numOfCharsInEachColumn) 
-                    # if mod is equal to 0, we move to List 0
-            plaintextList[index2].append(character)
-
-    # Printing out final array
-    print(f"Final Array: {plaintextList}")
-
-    # converting to string
-    outbound_plaintext = ''
-    for arraysMyBoi in plaintextList:
-        for letters in arraysMyBoi:
-            outbound_plaintext += letters
-
-    print(f"Final Ciphertext: {outbound_plaintext}")
 
 
 
-
-'''
     # pushing that plaintext into arrays
     for index,character in enumerate(input_ciphertext):
         print(f"Character: {character}")
@@ -296,51 +245,11 @@ def decrypt_transposition():
     print(outbound_plaintext)
     # Writing Data to a file
     write_to_file(f"Transposition_Decryption_{currentTime}","Trans Plaintext",outbound_plaintext)
-'''
 
-
-'''
-# --- Function to ENCRYPT a simple transposition cipher ---
-def encrypt(text, key):
-    # Create a 2D matrix with the given key
-    matrix = [[0 for x in range(key)] for y in range(len(text)//key + 1)]
-    k = 0
-    for i in range(len(text)//key + 1):
-        for j in range(key):
-            if k < len(text):
-                matrix[i][j] = text[k]
-                k += 1
-            else:
-                matrix[i][j] = 'X'
-
-    # Transpose the matrix
-    matrix = list(map(list, zip(*matrix)))
-    # Join the rows of the transposed matrix and return the result
-    return ''.join([''.join(row) for row in matrix])
-'''
-
-'''
-# --- Function to DECRYPT a simple substitution cipher ---
-def decrypt(text, key):
-    # Find the number of columns in the original matrix
-    cols = len(text)//key + 1
-    # Create a 2D matrix with the given key
-    matrix = [[0 for x in range(cols)] for y in range(key)]
-    k = 0
-    for i in range(key):
-        for j in range(cols):
-            if k < len(text):
-                matrix[i][j] = text[k]
-                k += 1
-    # Transpose the matrix
-    matrix = list(map(list, zip(*matrix)))
-    # Join the rows of the transposed matrix, removing padding characters, and return the result
-    return ''.join([''.join(row).rstrip('X') for row in matrix])
-'''
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-
+encrypt_transposition()
 decrypt_transposition()
