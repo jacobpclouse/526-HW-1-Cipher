@@ -172,14 +172,11 @@ def get_remainder(input_string):
 
 
 # --- Function to ENCRYPT a simple substitution cipher --- Sub Specific
-def encrypt_substitution():
-    currentTime = defang_datetime()
-    print(f"Current Date/Time: {currentTime}")
-    myLogo()
+def encrypt_substitution(plaintext_input):
     print("\nSimple Sub has been activated!\n")
     input_offset_key = input("What is the offset key you want? ") # getting the offest value from the user
-    input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
-
+    # input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+    input_plaintext = plaintext_input
 
     # Converts the plaintext into corresponding numbers
     # myPlaintextLettersArray = []
@@ -220,20 +217,17 @@ def encrypt_substitution():
     for characters in ciphertextArray:
         cipherText += characters
     
-    print(f"Ciphertext: {cipherText}")
-    # Writing Data to a file
-    write_to_file(f"Subsitution_Encryption_{currentTime}","Sub CipherText",cipherText)
+    # Returning ciphertext
+    return cipherText
 
 
 # --- Function to DECRYPT a simple substitution cipher --- Sub Specific
-def decrypt_substitution():
-    currentTime = defang_datetime()
-    print(f"Current Date/Time: {currentTime}")
-    myLogo()
+def decrypt_substitution(ciphertext_input):
     print("\nDecrypt Sub has been activated!\n")
 
     input_offset_decrypt_key = input("What is the offset key set to? ") # getting the offest decrypt key from the user
-    input_ciphertext = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+    # input_ciphertext = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+    input_ciphertext = ciphertext_input
 
     # Converts the ciphertext into corresponding numbers
     PlaintextArray = []
@@ -269,24 +263,20 @@ def decrypt_substitution():
     for characters in PlaintextArray:
         plainText += characters
     
-    print(f"Ciphertext: {plainText}")
-
-    # Writing Data to a file
-    write_to_file(f"Subsitution_Decryption_{currentTime}","Retrieved Plaintext",plainText)
+    # Returning Plaintext
+    return plainText
 
 
 # --- Function to ENCRYPT a simple transposition cipher ---
-def encrypt_transposition():
-    currentTime = defang_datetime()
-    print(f"Current Date/Time: {currentTime}")
-    myLogo()
+def encrypt_transposition(plaintext_input):
     print("\nSimple Transposition has been activated!\n")
 
     # The four Arrays used to encrypt a transposition cipher, in here because I don't want the data to remain outside this function
     ListOfLists = [[],[],[],[]]
 
     # getting plaintext from the user
-    input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+    # input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+    input_plaintext = plaintext_input
 
     # Getting remainder, seeing if we have to add any values to get it to be a factor of 4
     current_spaces_to_add = get_remainder(input_plaintext)
@@ -329,9 +319,6 @@ def encrypt_transposition():
     # getting key from user
     input_column_order_key = get_combo_of_1234()
     
-    # print(input_column_order_key)
-
-
     # Iterating through the array and creating the ciphertext
     # getting ciphertext ready
     outbound_ciphertext = ''
@@ -350,26 +337,20 @@ def encrypt_transposition():
         print(f"\nCurrent Ciphertext: {outbound_ciphertext}\n")
 
     
-    # printing out final ciphertext
-    print(outbound_ciphertext)
-    # Writing Data to a file
-    write_to_file(f"Transposition_Encryption_{currentTime}","Trans CipherText",outbound_ciphertext)
+    # Returning final ciphertext
+    return outbound_ciphertext
 
 
 # --- Function to DECRYPT a simple substitution cipher ---
-def decrypt_transposition():
-    currentTime = defang_datetime()
-    print(f"Current Date/Time: {currentTime}")
-    myLogo()
+def decrypt_transposition(ciphertext_input):
     print("\nDecrypt Transposition has been activated!\n")
 
     # The four Arrays used to decrypt a transposition cipher, in here because I don't want the data to remain outside this function
     ListOfLists = [[],[],[],[]]
 
     # getting plaintext from the user
-    input_ciphertext = input("\nWhat is the ciphertext message you want to decode? ") # getting the ciphertext to decrypt
-
-
+    # input_ciphertext = input("\nWhat is the ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+    input_ciphertext = ciphertext_input
 
     # pushing that plaintext into arrays
     for index,character in enumerate(input_ciphertext):
@@ -419,11 +400,47 @@ def decrypt_transposition():
         print(f"\nCurrent Ciphertext: {outbound_plaintext}\n")
 
     
-    # printing out final ciphertext
-    print(outbound_plaintext)
-    # Writing Data to a file
-    write_to_file(f"Transposition_Decryption_{currentTime}","Trans Plaintext",outbound_plaintext)
+    # returning out final ciphertext
+    return outbound_plaintext
 
+
+# --- Function to ENCRYPT the Full Product cipher ---
+def encrypt_product_cipher():
+    currentTime = defang_datetime()
+    print(f"Current Date/Time: {currentTime}")
+    myLogo()
+    print("Product Cipher Encrypt Started.... \n\n")
+
+    en_input_from_user = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+
+    # Subsitution Portion
+    sub_encrypt_part = encrypt_substitution(en_input_from_user)
+
+    # Transposition Portion
+    trans_encrypt_part = encrypt_transposition(sub_encrypt_part)
+
+    # Writing Encrypted Data to a file
+    write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Plaintext",trans_encrypt_part)
+
+
+
+# --- Function to DECRYPT the Full Product cipher ---
+def decrypt_product_cipher():
+    currentTime = defang_datetime()
+    print(f"Current Date/Time: {currentTime}")
+    myLogo()
+    print("Product Cipher Decrypt Started.... \n\n")
+
+    de_input_from_user = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+
+    # Transposition Portion
+    trans_decrypt_part = decrypt_transposition(de_input_from_user)
+
+    # Subsitution Portion
+    sub_decrypt_part = decrypt_substitution(trans_decrypt_part)
+
+    # Writing decrypted Data to a file
+    write_to_file(f"Product_Cipher_Decryption_{currentTime}","Product Ciphertext",sub_decrypt_part)
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -437,6 +454,27 @@ def decrypt_transposition():
 # 5th: see if you can break it with two cryptoanalyical methods - if not, then you are done!
 # 6th: make a video on this explaining it from start to finish
 
+chooseOperation = input("What kind of operation do you want: ENCRYPT or DECRYPT? ")
+print(chooseOperation.upper())
+print('\n')
+
+# Catch statement to prevent invalid selections
+while chooseOperation == '':
+    chooseOperation = input("Can't be left blank, please input either ENCRYPT or DECRYPT: ")
+
+# execute encrypt operation
+if chooseOperation.upper() == 'ENCRYPT':
+    encrypt_product_cipher()
+
+# execute decrypt operation
+elif chooseOperation.upper() == 'DECRYPT':
+    decrypt_product_cipher()
+
+# if nonsense, end the script
+else:
+    print("Response Not Recognized, Ending Program...")
+
+
 
 # test sub -- both working, just need to have it return value for **encryption** instead of making file
 #encrypt_substitution()
@@ -446,6 +484,7 @@ def decrypt_transposition():
 # test trans -- both working, just need to have it return value for **decrpytion** instead of making file
 #encrypt_transposition()
 #decrypt_transposition()
+
 
 
 '''
