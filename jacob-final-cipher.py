@@ -454,6 +454,10 @@ def decrypt_product_cipher():
 # 5th: see if you can break it with two cryptoanalyical methods - if not, then you are done!
 # 6th: make a video on this explaining it from start to finish
 
+'''
+if the transpostion text is less than a certain length, then it will fail. it needs to be 16 or above (maybe add in the one time pad in between?)
+'''
+
 chooseOperation = input("What kind of operation do you want: ENCRYPT or DECRYPT? ")
 print(chooseOperation.upper())
 print('\n')

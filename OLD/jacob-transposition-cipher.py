@@ -251,5 +251,5 @@ def decrypt_transposition():
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-#encrypt_transposition()
+encrypt_transposition()
 decrypt_transposition()

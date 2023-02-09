@@ -239,7 +239,7 @@ def decrypt_substitution():
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 # Encryption function
-# encrypt_substitution()
+encrypt_substitution()
 
 # Decryption function
-decrypt_substitution()
+#decrypt_substitution()
