@@ -342,5 +342,22 @@ def decrypt(text, key):
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+chooseOperation = input("What kind of operation do you want: ENCRYPT or DECRYPT? ")
+print(chooseOperation.upper())
+print('\n')
 
-decrypt_transposition()
+# Catch statement to prevent invalid selections
+while chooseOperation == '':
+    chooseOperation = input("Can't be left blank, please input either ENCRYPT or DECRYPT: ")
+
+# execute encrypt operation
+if chooseOperation.upper() == 'ENCRYPT':
+    encrypt_transposition()
+
+# execute decrypt operation
+elif chooseOperation.upper() == 'DECRYPT':
+    decrypt_transposition()
+
+# if nonsense, end the script
+else:
+    print("Response Not Recognized, Ending Program...")

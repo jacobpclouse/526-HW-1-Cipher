@@ -171,19 +171,12 @@ def get_remainder(input_string):
     return int(number_of_spaces_to_add)
 
 
-# --- Function to split up a string into 4 equal parts ---
-def split_my_string_in_4(string):
-    length = len(string) # getting length
-    part_length = length // 4
-    return [string[i:i + part_length] for i in range(0, length, part_length)] # returning each piece in an array
-
-
-# --- Function to ENCRYPT a simple substitution cipher ---
-def encrypt_substitution(input_plaintext):
+# --- Function to ENCRYPT a simple substitution cipher --- Sub Specific
+def encrypt_substitution(plaintext_input):
     print("\nSimple Sub has been activated!\n")
     input_offset_key = input("What is the offset key you want? ") # getting the offest value from the user
     # input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
-
+    input_plaintext = plaintext_input
 
     # Converts the plaintext into corresponding numbers
     # myPlaintextLettersArray = []
@@ -224,16 +217,17 @@ def encrypt_substitution(input_plaintext):
     for characters in ciphertextArray:
         cipherText += characters
     
-    # Returning ciphertext to calling function
+    # Returning ciphertext
     return cipherText
 
 
-# --- Function to DECRYPT a simple substitution cipher ---
-def decrypt_substitution(input_ciphertext):
+# --- Function to DECRYPT a simple substitution cipher --- Sub Specific
+def decrypt_substitution(ciphertext_input):
     print("\nDecrypt Sub has been activated!\n")
 
     input_offset_decrypt_key = input("What is the offset key set to? ") # getting the offest decrypt key from the user
     # input_ciphertext = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
+    input_ciphertext = ciphertext_input
 
     # Converts the ciphertext into corresponding numbers
     PlaintextArray = []
@@ -269,13 +263,12 @@ def decrypt_substitution(input_ciphertext):
     for characters in PlaintextArray:
         plainText += characters
     
-    # Returing plaintext to calling function
+    # Returning Plaintext
     return plainText
 
 
-
-# --- Function to ENCRYPT a simple transposition cipher --- do a custom number of rails
-def encrypt_transposition(input_plaintext):
+# --- Function to ENCRYPT a simple transposition cipher ---
+def encrypt_transposition(plaintext_input):
     print("\nSimple Transposition has been activated!\n")
 
     # The four Arrays used to encrypt a transposition cipher, in here because I don't want the data to remain outside this function
@@ -283,6 +276,7 @@ def encrypt_transposition(input_plaintext):
 
     # getting plaintext from the user
     # input_plaintext = input("\nWhat is the plaintext message you want to encode? ") # getting the plaintext to encrypt
+    input_plaintext = plaintext_input
 
     # Getting remainder, seeing if we have to add any values to get it to be a factor of 4
     current_spaces_to_add = get_remainder(input_plaintext)
@@ -343,61 +337,70 @@ def encrypt_transposition(input_plaintext):
         print(f"\nCurrent Ciphertext: {outbound_ciphertext}\n")
 
     
-    # Returing ciphertext to calling function
+    # Returning final ciphertext
     return outbound_ciphertext
 
 
-# --- Function to DECRYPT a simple substitution cipher --- do a custom number of rails
-def decrypt_transposition(input_ciphertext):
+# --- Function to DECRYPT a simple substitution cipher ---
+def decrypt_transposition(ciphertext_input):
     print("\nDecrypt Transposition has been activated!\n")
 
     # The four Arrays used to decrypt a transposition cipher, in here because I don't want the data to remain outside this function
-    ciphertextList = []
-    plaintextList = []
-    
+    ListOfLists = [[],[],[],[]]
+
     # getting plaintext from the user
     # input_ciphertext = input("\nWhat is the ciphertext message you want to decode? ") # getting the ciphertext to decrypt
-    split_up_ciphertext = split_my_string_in_4(input_ciphertext)
+    input_ciphertext = ciphertext_input
 
-    #number of columns in each column
-    numOfCharsInEachColumn = int(len(input_ciphertext) / 4)
-    print(numOfCharsInEachColumn)
-    for jakes in range(numOfCharsInEachColumn):
-        plaintextList.append([])
+    # pushing that plaintext into arrays
+    for index,character in enumerate(input_ciphertext):
+        print(f"Character: {character}")
+        print(f"Index: {index}")
 
-    print(f"We should have {numOfCharsInEachColumn} in plaintextList = {plaintextList}")
+        # Get mod 4 of the current char 
+        current_mod_of_char = index % 4
+        print(f"Current Modulus: {current_mod_of_char}")
 
-    print(f"Splitting up Plaintext: {split_up_ciphertext}")
+        # if mod is equal to 0, we move to List 0
+        if (current_mod_of_char == 0):
+            ListOfLists[0].append(character)
+
+        # if mod is equal to 1, we move to List 1
+        elif (current_mod_of_char == 1):
+            ListOfLists[1].append(character)
+
+        # if mod is equal to 2, we move to List 2
+        elif (current_mod_of_char == 2):
+            ListOfLists[2].append(character)
+
+        # mod has to be equal to 3, we move to List 3
+        else:
+            ListOfLists[3].append(character)
+
+    print(ListOfLists)
 
     # getting key from user
     input_column_order_key = get_combo_of_1234()
-
-    # append each array in order
-    for nums in input_column_order_key:
-        ciphertextList.append(split_up_ciphertext[(nums - 1)])
-
-    print(f"After Re order: {ciphertextList}")
-
-    #adding array
-    for index,arrays in enumerate(ciphertextList):
-        print(f"Index: {index}, Array: {arrays}")
-        for index2,character in enumerate(arrays):
-            print(f"Index2: {index2}, Array: {character}")
-
-            # if (index2 % numOfCharsInEachColumn) 
-                    # if mod is equal to 0, we move to List 0
-            plaintextList[index2].append(character)
-
-    # Printing out final array
-    print(f"Final Array: {plaintextList}")
-
-    # converting to string
+    
+    # Iterating through the array and creating the ciphertext
+    # getting ciphertext ready
     outbound_plaintext = ''
-    for arraysMyBoi in plaintextList:
-        for letters in arraysMyBoi:
-            outbound_plaintext += letters
 
-    # returning to calling function
+    # appending arrays to ciphertext
+    for numbers in input_column_order_key:
+        print(f"Appending List {(numbers - 1)} as value was: {numbers}")
+        print(f"This is ListOfLists{(numbers - 1)}, or: {ListOfLists[(numbers - 1)]}")
+
+        # Changing list to string
+        stringify_this = ''.join(ListOfLists[int((numbers - 1))])
+        print(f"Stringifying: {stringify_this}")
+        outbound_plaintext += stringify_this
+
+        # showing what the current ciphertext is
+        print(f"\nCurrent Ciphertext: {outbound_plaintext}\n")
+
+    
+    # returning out final ciphertext
     return outbound_plaintext
 
 
@@ -420,6 +423,7 @@ def encrypt_product_cipher():
     write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Plaintext",trans_encrypt_part)
 
 
+
 # --- Function to DECRYPT the Full Product cipher ---
 def decrypt_product_cipher():
     currentTime = defang_datetime()
@@ -437,7 +441,6 @@ def decrypt_product_cipher():
 
     # Writing decrypted Data to a file
     write_to_file(f"Product_Cipher_Decryption_{currentTime}","Product Ciphertext",sub_decrypt_part)
-
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
