@@ -85,7 +85,7 @@ The answer to 1b depends on if the \textbf{d} in \textbf{C = [a × (P-d) + b] mo
 	\item ii) If this is part of the key, we \textbf{CAN NOT} crack this. If it was something like a One Time pad, the encryption key is a random number and, the key is used only once. That would mean we couldn't solve for it like we did for a and b, it would have no correlation between the two equations. 
 \end{itemize}
 
-\section{\underline{ - Question 2 Answer (DESIGN):}}
+\section{\underline{ - Question 2 Answer (Design Overview):}}
 The design of my algorithm can be broken down into three parts: 
 
 \begin{itemize}
@@ -108,6 +108,10 @@ I would wager that this algorithm would be very hard to break with just pen and 
 
 \section{\underline{ - Question 2b Answer: (NEED TO ASK)}}
 %(b) your algorithm is secure against any two cryptanalytic attacks.
-
+Two Attacks that my cipher is secure against:
+\begin{itemize}
+	\item \textbf{Ciphertext-Only Analysis: }As stated before, you can't break this cipher with frequency/statistical analysis because of the one time pad. One letter can have multiple outputs and multiple letters can share the same output. It is very hard to break unless you have the key.
+	\item \textbf{Chosen-Plaintext Analysis: }Based off of the different combinations of substitution, transposition and one time pad sections, it would be near impossible to reverse engineer the key. Just because of the one time pad alone with its one off random key, you should only be able to get decipher this if you already have the key. Add to that the complexity that the substitution and transposition ciphers add on top and it become a momentous undertaking.   
+\end{itemize}
 
 \end{document}
