@@ -19,9 +19,9 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - [x] I want these written in: ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 - [x] Substitution cipher draft has been finished
 - [x] Transposition cipher draft has been finished
-- [ ] Combine both programs into the final program
-- [ ] Make it uncrackable: Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles)
-- [ ] Create a Simple GUI for the user to interact with (Tkinter)
+- [x] Combine both programs into the final program
+- [x] Make it uncrackable: Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles) - added One Time Pad
+- [ ] Create video to display how the program works
 
 
 ## Resources used:
