@@ -39,3 +39,4 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - How to test that variable is not equal to multiple things?: https://stackoverflow.com/questions/12553609/how-to-test-that-variable-is-not-equal-to-multiple-things
 - How to Convert List to String in Python?: https://www.simplilearn.com/tutorials/python-tutorial/list-to-string-in-python#:~:text=To%20convert%20a%20list%20to%20a%20string%2C%20use%20Python%20List,and%20return%20it%20as%20output.
 - Generating random number list in Python: https://www.tutorialspoint.com/generating-random-number-list-in-python
+- Python ord() Function: https://www.w3schools.com/python/ref_func_ord.asp
