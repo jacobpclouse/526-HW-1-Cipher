@@ -48,19 +48,8 @@ def defang_datetime():
 
 # --- Function to Write Data to a file ---
 def data_to_file(NameOfFile,dataToWrite):
-    # if type == 'array':
-    # can't use write for list type, need to use writelines
     with open(f"{NameOfFile}.pickle", "wb") as out_file:
         pickle.dump(dataToWrite, out_file)
-    # else:
-    #     # to handle strings
-    #     outboundFile = open(f"{NameOfFile}.txt", "w")
-    #     ThisIsForStrings = outboundFile.write(dataToWrite)
-    #     outboundFile.close()
-
-
-
-
 
 
 # --- Function to Encrypt a One Time Pad ---
@@ -85,15 +74,21 @@ def encrypt_one_time_pad(plaintext):
     print(f"Length of Ciphertext Array: {len(array_ciphertext)}")
     
     # Write ciphertext and key to separate files
-    data_to_file("CIPHER",array_ciphertext)
-    data_to_file("OTP_KEY",one_time_pad_key)
+    # data_to_file("CIPHER",array_ciphertext)
+    # data_to_file("OTP_KEY",one_time_pad_key)
+
+    with open("CIPHER.pickle", "wb") as out_file:
+        pickle.dump(array_ciphertext, out_file)
+
+    with open("OTP_KEY.pickle", "wb") as out_file:
+        pickle.dump(one_time_pad_key, out_file)
+
 
     return one_time_pad_key, array_ciphertext
     
 
 
 # --- Function to Decrypt a One Time Pad ---
-#def decrypt_one_time_pad(one_time_pad_decrypt_key,ciphertext):
 def decrypt_one_time_pad():
     # will take in input from user outside of function and then pass it in
     print("Simple One Time Pad Decrypt\n")
@@ -120,7 +115,7 @@ def decrypt_one_time_pad():
     print(f"Your plaintext: {output_plaintext}")
 
     return output_plaintext
-''''''
+
 
 
 '''
@@ -132,7 +127,7 @@ have python save the one time pad ciphertext to a file, then open that file and 
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-outside_key, outside_ciphertext = encrypt_one_time_pad("LETS GO BOI")
+outside_key, outside_ciphertext = encrypt_one_time_pad("the rain in spain falls neatly in the drain Holy crap IT WORKS")
 
 print(f"Outside of function:\nKey: {outside_key},\nCiphertext:{outside_ciphertext}")
 

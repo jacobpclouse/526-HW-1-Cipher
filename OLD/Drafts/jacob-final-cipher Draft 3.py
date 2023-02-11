@@ -5,8 +5,7 @@
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 import datetime # used to get the datetime for "defang_datetime" function
-import random # one time pad use
-import pickle # saving array data to file
+
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Variables
@@ -274,6 +273,7 @@ def decrypt_substitution(input_ciphertext):
     return plainText
 
 
+
 # --- Function to ENCRYPT a simple transposition cipher --- do a custom number of rails
 def encrypt_transposition(input_plaintext):
     print("\nSimple Transposition has been activated!\n")
@@ -389,7 +389,7 @@ def decrypt_transposition(input_ciphertext):
             plaintextList[index2].append(character)
 
     # Printing out final array
-    # print(f"Final Array: {plaintextList}")
+    print(f"Final Array: {plaintextList}")
 
     # converting to string
     outbound_plaintext = ''
@@ -397,75 +397,8 @@ def decrypt_transposition(input_ciphertext):
         for letters in arraysMyBoi:
             outbound_plaintext += letters
 
-    # print output
-    print(f"Final Output String: {outbound_plaintext}")
-
     # returning to calling function
     return outbound_plaintext
-
-
-# --- Function to Encrypt a One Time Pad ---
-def encrypt_one_time_pad(plaintext):
-    # will take in input from user outside of function and then pass it in
-    print("Simple One Time Pad Encrypt\n")
-
-    # using the length of pad to generate random one digit numbers from 0 to 9, need to store and output
-    one_time_pad_key= ''
-    for letters in plaintext:
-        current_key_value = str(random.randint(0,9))
-        one_time_pad_key += current_key_value
-        # print(f"Letter: {letters}, Key value: {current_key_value}")
-
-    # take your key and combine with your plaintext to get your ciphertext
-    array_ciphertext = [chr(ord(p) ^ ord(k)) for (p,k) in zip(plaintext, one_time_pad_key)]
-    # output_ciphertext = ' '.join(array_ciphertext)
-
-    # output ciphertext and key
-    print(f"\nOne Time Pad Key: {one_time_pad_key}")
-    print(f"Output Ciphertext: {array_ciphertext}")
-    print(f"Length of Ciphertext Array: {len(array_ciphertext)}")
-    
-    # Write ciphertext and key to separate files
-    # data_to_file("CIPHER",array_ciphertext)
-    # data_to_file("OTP_KEY",one_time_pad_key)
-
-    with open("CIPHER.pickle", "wb") as out_file:
-        pickle.dump(array_ciphertext, out_file)
-
-    with open("OTP_KEY.pickle", "wb") as out_file:
-        pickle.dump(one_time_pad_key, out_file)
-
-
-    return one_time_pad_key, array_ciphertext
-    
-
-# --- Function to Decrypt a One Time Pad ---
-def decrypt_one_time_pad():
-    # will take in input from user outside of function and then pass it in
-    print("Simple One Time Pad Decrypt\n")
-
-    # loading key from pickle
-    with open("OTP_KEY.pickle", "rb") as loaded_key_file:
-        one_time_pad_decrypt_key = pickle.load(loaded_key_file)
-
-    # Loading ciphertext from pickle
-    with open("CIPHER.pickle", "rb") as loaded_cipher_file:
-        ciphertext = pickle.load(loaded_cipher_file)
-    
-
-    print(f"Ciphertext: {ciphertext}, Key: {one_time_pad_decrypt_key}")
-
-    # take your key and combine with your ciphertext to get your plaintext back
-    array_plaintext = [chr(ord(p) ^ ord(k)) for (p,k) in zip(ciphertext, one_time_pad_decrypt_key)]
-
-    # change output from array to a string
-    output_plaintext = ''
-    for characters in array_plaintext:
-        output_plaintext += characters
-
-    print(f"Your plaintext: {output_plaintext}")
-
-    return output_plaintext
 
 
 # --- Function to ENCRYPT the Full Product cipher ---
@@ -483,11 +416,8 @@ def encrypt_product_cipher():
     # Transposition Portion
     trans_encrypt_part = encrypt_transposition(sub_encrypt_part)
 
-    # One Time Pad Portion
-    OTP_encrypt_part = encrypt_one_time_pad(trans_encrypt_part)
-
     # Writing Encrypted Data to a file
-    write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Ciphertext: ",OTP_encrypt_part)
+    write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Plaintext",trans_encrypt_part)
 
 
 # --- Function to DECRYPT the Full Product cipher ---
@@ -497,14 +427,7 @@ def decrypt_product_cipher():
     myLogo()
     print("Product Cipher Decrypt Started.... \n\n")
 
-    # de_input_from_user = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
-
-    # Pulling data from file
-    print("Please make sure that the CIPHER.pickle and OTP_KEY.pickle files are in this directory!")
-
-    # One Time Pad Portion - auto opens pickle files
-    de_input_from_user = decrypt_one_time_pad()
-
+    de_input_from_user = input("\nWhat is the Ciphertext message you want to decode? ") # getting the ciphertext to decrypt
 
     # Transposition Portion
     trans_decrypt_part = decrypt_transposition(de_input_from_user)
@@ -513,7 +436,8 @@ def decrypt_product_cipher():
     sub_decrypt_part = decrypt_substitution(trans_decrypt_part)
 
     # Writing decrypted Data to a file
-    write_to_file(f"Product_Cipher_Decryption_{currentTime}","Product Plaintext:",sub_decrypt_part)
+    write_to_file(f"Product_Cipher_Decryption_{currentTime}","Product Ciphertext",sub_decrypt_part)
+
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -527,6 +451,9 @@ def decrypt_product_cipher():
 # 5th: see if you can break it with two cryptoanalyical methods - if not, then you are done!
 # 6th: make a video on this explaining it from start to finish
 
+'''
+if the transpostion text is less than a certain length, then it will fail. it needs to be 16 or above (maybe add in the one time pad in between?)
+'''
 
 chooseOperation = input("What kind of operation do you want: ENCRYPT or DECRYPT? ")
 print(chooseOperation.upper())
@@ -547,6 +474,17 @@ elif chooseOperation.upper() == 'DECRYPT':
 # if nonsense, end the script
 else:
     print("Response Not Recognized, Ending Program...")
+
+
+
+# test sub -- both working, just need to have it return value for **encryption** instead of making file
+#encrypt_substitution()
+#decrypt_substitution()
+
+
+# test trans -- both working, just need to have it return value for **decrpytion** instead of making file
+#encrypt_transposition()
+#decrypt_transposition()
 
 
 
