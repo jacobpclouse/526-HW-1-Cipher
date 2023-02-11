@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.11)  11 FEB 2023 15:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.11)  11 FEB 2023 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -296,7 +296,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--71
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--103
+Underfull \hbox (badness 10000) in paragraph at lines 96--104
 
  []
 
@@ -321,7 +321,7 @@ nts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
 >
-Output written on jacob-clouse-526-hm1.pdf (3 pages, 138120 bytes).
+Output written on jacob-clouse-526-hm1.pdf (3 pages, 140712 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -68,7 +68,7 @@ This is equal to 17, which is the value we calculated previously. So it works!
 \\
 \\
 \\
-\section{\underline{ - Question 1b Answer:}}
+\section{\underline{ - Question 1b Answer: (NEED TO ASK)}}
 \iffalse
 COMMENT:
 1b) if it it is part of the key, than it is not solvable
@@ -100,17 +100,14 @@ The transposition section is loosely based off of the row transposition cipher. 
 What makes this cipher truly secure is the one time pad section. The one time pad as a concept was created over 100 years ago and it is still being used in cryptography to this very day because it is so secure. We use our transposition ciphertext as the input to our one time pad function and it determines the number its length. It then goes and generates a random value between 0 and 9 for each character. This gets us a string of numbers the same length of our key. We then combine this key with our plaintext using ord() operations. This should only be breakable if you have the specific key that goes along with your ciphertext. Otherwise, this ensures the security of the full cipher. Our cipher and key are stored as pickle objects and printed out in our terminal. Separate the key from the cipher, and it should be pretty dang secure. \newline
 \newline
 To decrypt our cipher, all we need to do is reverse our process. First, we start off with the one time pad section, you just need to provide the pickle files for the key and the ciphertext. It will open up the pickle files and reverse the operation (done the same way you encrypted them). This is followed by the transposition section. The output from the one time pad decrypt is fed into the transposition decrypt function, all it needs from you is the column combination key that you set when you encrypted it. Once you provide that, it will rearrange the columns back to their decrypted state. But we are not done, we just have to do the substitution cipher decrypt. The output from the transposition decrypt is fed once again into the substitution cipher decrypt function, all we need to do is provide it the offset that you originally set during the encryption. And, just like that, we are done with the decryption!
-
 %When you combine all of these into one, you get your product cipher!
+\section{\underline{ - Question 2a Answer (NEED TO ASK):}}
+%(a) breaking your algorithm is going to require coding effort (i.e., your algorithm cannot be broken by using pen and paper).
+I would wager that this algorithm would be very hard to break with just pen and paper. Even if this was just the substitution and the transposition section, it would not be fun to crack. Combining two ciphers together helps to defuse the output, making it harder for a potential attacker to brute force the output. You can use frequency analysis to see which letters occur most often (since a letter will not have multiple outputs), so the first part can be cracked. \newline
+\textbf{BUT} where this cipher truly begins to shine is in the last section: the one time pad section. This section enables letters to lead multiple potential outputs. And, as long as you use truly random keys, no two combinations will lead to exactly the same output (we can try encrypting the same word twice and we will get two different outputs). Unless you know the key, you shouldn't be able break this with pen and paper. 
 
-
-
-\section{\underline{ - Question 2a Answer:}}
-(a) breaking your algorithm is going to require coding effort (i.e., your algorithm cannot be broken by
-using pen and paper).
-
-\section{\underline{ - Question 2b Answer:}}
-(b) your algorithm is secure against any two cryptanalytic attacks.
+\section{\underline{ - Question 2b Answer: (NEED TO ASK)}}
+%(b) your algorithm is secure against any two cryptanalytic attacks.
 
 
 \end{document}
