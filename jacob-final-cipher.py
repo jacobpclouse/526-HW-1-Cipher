@@ -1,5 +1,12 @@
 # This Python Program was written on Windows 10 and Linux Mint using VScode, your milage may vary based on your OS and configuration.
 
+
+'''
+A Quote before you read:
+"There is a way out of every box, a solution to every puzzle; it's just a matter of finding it."
+– Captain Jean-Luc Picard
+'''
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Importing Libraries / Modules 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -549,8 +556,4 @@ else:
     print("Response Not Recognized, Ending Program...")
 
 
-
-'''
-IDEA: why not do a mode where you can run through a custom number of ciphers? 
-Maybe in addition to the original set number
-'''
+# Thank you for viewing my program, I hope you liked it!
