@@ -213,7 +213,7 @@ def encrypt_substitution(input_plaintext):
 
             # We have the cipher value, now we just need to convert it to the ciphertext letter
             convertedToCipherLetter = numbersTolettersDict[covertedToCipherValue]
-            print(f"Current Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Cipher Value: {covertedToCipherValue}, Cipher Letter: {convertedToCipherLetter}")
+            ##print(f"Current Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Cipher Value: {covertedToCipherValue}, Cipher Letter: {convertedToCipherLetter}")
 
             # Append to the array
             ciphertextArray.append(convertedToCipherLetter)
@@ -221,11 +221,11 @@ def encrypt_substitution(input_plaintext):
 
         else:
             # print('NOT A LETTER')
-            print(f"Current Character: {letters}, Appending to Array as is...")
+            ##print(f"Current Character: {letters}, Appending to Array as is...")
             # myPlaintextLettersArray.append(lettersToNumbersDict[letters])
             ciphertextArray.append(letters)
 
-    print(f"Output Array: {ciphertextArray}\n")
+    ##print(f"Output Array: {ciphertextArray}\n")
 
     # Turn array into a string
     cipherText = ''
@@ -260,17 +260,17 @@ def decrypt_substitution(input_ciphertext):
 
             # We have the plaintext value, now we just need to convert it to the original letter
             convertedToPlaintextLetter = numbersTolettersDict[covertedToPlaintextValue]
-            print(f"Current Cipher Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Plaintext Value: {covertedToPlaintextValue}, Original Letter: {convertedToPlaintextLetter}")
+            ##print(f"Current Cipher Character: {lowerCaseLetter}, Character Value: {lettersToNumbersDict[lowerCaseLetter]}, Plaintext Value: {covertedToPlaintextValue}, Original Letter: {convertedToPlaintextLetter}")
 
             # Append to the array
             PlaintextArray.append(convertedToPlaintextLetter)
 
 
         else:
-            print(f"Current Character: {letters}, Appending to Array as is...")
+            ##print(f"Current Character: {letters}, Appending to Array as is...")
             PlaintextArray.append(letters)
 
-    print(f"Output Array: {PlaintextArray}\n")
+    ##print(f"Output Array: {PlaintextArray}\n")
 
     # Turn array into a string
     plainText = ''
@@ -293,23 +293,23 @@ def encrypt_transposition(input_plaintext):
 
     # Getting remainder, seeing if we have to add any values to get it to be a factor of 4
     current_spaces_to_add = get_remainder(input_plaintext)
-    print(current_spaces_to_add)
+    ##print(current_spaces_to_add)
 
     if current_spaces_to_add != 4:
         for space in range(current_spaces_to_add):
             input_plaintext += ' ' # if you use spaces to add, then they don't know if they are 'real' spaces or just the padding at the end
             print(input_plaintext)
-    print(f"\nNow with the displacement, the new plaintext is: {input_plaintext}")
+    ##print(f"\nNow with the displacement, the new plaintext is: {input_plaintext}")
 
 
     # pushing that plaintext into arrays
     for index,character in enumerate(input_plaintext):
-        print(f"Character: {character}")
-        print(f"Index: {index}")
+        ##print(f"Character: {character}")
+        ##print(f"Index: {index}")
 
         # Get mod 4 of the current char 
         current_mod_of_char = index % 4
-        print(f"Current Modulus: {current_mod_of_char}")
+        ##print(f"Current Modulus: {current_mod_of_char}")
 
         # if mod is equal to 0, we move to List 0
         if (current_mod_of_char == 0):
@@ -327,7 +327,7 @@ def encrypt_transposition(input_plaintext):
         else:
             ListOfLists[3].append(character)
 
-    print(ListOfLists)
+    ##print(ListOfLists)
 
     # getting key from user
     input_column_order_key = get_combo_of_1234()
@@ -338,16 +338,16 @@ def encrypt_transposition(input_plaintext):
 
     # appending arrays to ciphertext
     for numbers in input_column_order_key:
-        print(f"Appending List {(numbers - 1)} as value was: {numbers}")
-        print(f"This is ListOfLists{(numbers - 1)}, or: {ListOfLists[(numbers - 1)]}")
+        ##print(f"Appending List {(numbers - 1)} as value was: {numbers}")
+        ##print(f"This is ListOfLists{(numbers - 1)}, or: {ListOfLists[(numbers - 1)]}")
 
         # Changing list to string
         stringify_this = ''.join(ListOfLists[int((numbers - 1))])
-        print(f"Stringifying: {stringify_this}")
+        ##print(f"Stringifying: {stringify_this}")
         outbound_ciphertext += stringify_this
 
         # showing what the current ciphertext is
-        print(f"\nCurrent Ciphertext: {outbound_ciphertext}\n")
+        ##print(f"\nCurrent Ciphertext: {outbound_ciphertext}\n")
 
     
     # Returing ciphertext to calling function
@@ -366,15 +366,15 @@ def decrypt_transposition(input_ciphertext):
     # input_ciphertext = input("\nWhat is the ciphertext message you want to decode? ") # getting the ciphertext to decrypt
     split_up_ciphertext = split_my_string_in_4(input_ciphertext)
 
-    #number of columns in each column
+    # number of columns in each column
     numOfCharsInEachColumn = int(len(input_ciphertext) / 4)
-    print(numOfCharsInEachColumn)
+    ##print(numOfCharsInEachColumn)
     for jakes in range(numOfCharsInEachColumn):
         plaintextList.append([])
 
-    print(f"We should have {numOfCharsInEachColumn} in plaintextList = {plaintextList}")
+    ##print(f"We should have {numOfCharsInEachColumn} in plaintextList = {plaintextList}")
 
-    print(f"Splitting up Plaintext: {split_up_ciphertext}")
+    ##print(f"Splitting up Plaintext: {split_up_ciphertext}")
 
     # getting key from user
     input_column_order_key = get_combo_of_1234()
@@ -383,16 +383,14 @@ def decrypt_transposition(input_ciphertext):
     for nums in input_column_order_key:
         ciphertextList.append(split_up_ciphertext[(nums - 1)])
 
-    print(f"After Re order: {ciphertextList}")
+    ##print(f"After Re order: {ciphertextList}")
 
-    #adding array
+    # adding array
     for index,arrays in enumerate(ciphertextList):
-        print(f"Index: {index}, Array: {arrays}")
+        ##print(f"Index: {index}, Array: {arrays}")
         for index2,character in enumerate(arrays):
-            print(f"Index2: {index2}, Array: {character}")
+            ##print(f"Index2: {index2}, Array: {character}")
 
-            # if (index2 % numOfCharsInEachColumn) 
-                    # if mod is equal to 0, we move to List 0
             plaintextList[index2].append(character)
 
     # Printing out final array
@@ -405,7 +403,7 @@ def decrypt_transposition(input_ciphertext):
             outbound_plaintext += letters
 
     # print output
-    print(f"Final Output String: {outbound_plaintext}")
+    ##print(f"Final Output String: {outbound_plaintext}")
 
     # returning to calling function
     return outbound_plaintext
@@ -425,12 +423,11 @@ def encrypt_one_time_pad(plaintext):
 
     # take your key and combine with your plaintext to get your ciphertext
     array_ciphertext = [chr(ord(p) ^ ord(k)) for (p,k) in zip(plaintext, one_time_pad_key)]
-    # output_ciphertext = ' '.join(array_ciphertext)
 
     # output ciphertext and key
-    print(f"\nOne Time Pad Key: {one_time_pad_key}")
-    print(f"Output Ciphertext: {array_ciphertext}")
-    print(f"Length of Ciphertext Array: {len(array_ciphertext)}")
+    ##print(f"\nOne Time Pad Key: {one_time_pad_key}")
+    ##print(f"Output Ciphertext: {array_ciphertext}")
+    ##print(f"Length of Ciphertext Array: {len(array_ciphertext)}")
     
     # Write ciphertext and key to separate files
     # data_to_file("CIPHER",array_ciphertext)
@@ -460,7 +457,7 @@ def decrypt_one_time_pad():
         ciphertext = pickle.load(loaded_cipher_file)
     
 
-    print(f"Ciphertext: {ciphertext}, Key: {one_time_pad_decrypt_key}")
+    ##print(f"Ciphertext: {ciphertext}, Key: {one_time_pad_decrypt_key}")
 
     # take your key and combine with your ciphertext to get your plaintext back
     array_plaintext = [chr(ord(p) ^ ord(k)) for (p,k) in zip(ciphertext, one_time_pad_decrypt_key)]
@@ -470,7 +467,7 @@ def decrypt_one_time_pad():
     for characters in array_plaintext:
         output_plaintext += characters
 
-    print(f"Your plaintext: {output_plaintext}")
+    ##print(f"Your plaintext: {output_plaintext}")
 
     return output_plaintext
 
@@ -491,10 +488,14 @@ def encrypt_product_cipher():
     trans_encrypt_part = encrypt_transposition(sub_encrypt_part)
 
     # One Time Pad Portion
-    OTP_encrypt_part = encrypt_one_time_pad(trans_encrypt_part)
+    OTP_encrypt_Key, OTP_encrypt_ciphertext = encrypt_one_time_pad(trans_encrypt_part)
 
     # Writing Encrypted Data to a file
-    write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Ciphertext: ",OTP_encrypt_part)
+    write_to_file(f"Product_Cipher_Encryption_{currentTime}","Product Ciphertext: ",OTP_encrypt_ciphertext)
+
+    # Printing Ciphertext
+    print(f"The One Time Pad key was: {OTP_encrypt_Key}")
+    print(f"Your encrypted ciphertext is: {OTP_encrypt_ciphertext}")
 
 
 # --- Function to DECRYPT the Full Product cipher ---
@@ -521,6 +522,9 @@ def decrypt_product_cipher():
 
     # Writing decrypted Data to a file
     write_to_file(f"Product_Cipher_Decryption_{currentTime}","Product Plaintext:",sub_decrypt_part)
+
+    # Print Plaintext:
+    print(f"Your decrypted plaintext is: {sub_decrypt_part}")
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
