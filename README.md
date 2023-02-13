@@ -21,7 +21,7 @@ I want to create something unique that uses random/psuedo random input to 'salt'
 - [x] Transposition cipher draft has been finished
 - [x] Combine both programs into the final program
 - [x] Make it uncrackable: Add a random salt to the cipher that prevents freqency analysis (and doesn't make decryption impossibles) - added One Time Pad
-- [ ] Create video to display how the program works
+- [x] Create video to display how the program works
 
 
 ## Resources used:
