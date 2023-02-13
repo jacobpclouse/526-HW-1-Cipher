@@ -5,7 +5,18 @@
 A Quote before you read:
 "There is a way out of every box, a solution to every puzzle; it's just a matter of finding it."
 – Captain Jean-Luc Picard
+
+
 '''
+
+
+# GOALS for Development:
+# 1st: get the substitution program working, then take the out put and pipe it into the transpostion - encryption works
+# 2nd: reverse it for decryption: first transpose and then substitute to decrypt
+# 3rd: verify encrypt to decrypt works fully with one pass each
+# 4th: add an additional subsitution (either after 1st sub or the transposition) -- add more if you want
+# 5th: see if you can break it with two cryptoanalyical methods - if not, then you are done!
+# 6th: make a video on this explaining it from start to finish
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Importing Libraries / Modules 
@@ -530,14 +541,6 @@ def decrypt_product_cipher():
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # MAIN PROGRAM
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-# 1st: get the substitution program working, then take the out put and pipe it into the transpostion - encryption works
-# 2nd: reverse it for decryption: first transpose and then substitute to decrypt
-# 3rd: verify encrypt to decrypt works fully with one pass each
-# 4th: add an additional subsitution (either after 1st sub or the transposition) -- add more if you want
-# 5th: see if you can break it with two cryptoanalyical methods - if not, then you are done!
-# 6th: make a video on this explaining it from start to finish
-
 
 chooseOperation = input("What kind of operation do you want: ENCRYPT or DECRYPT? ")
 print(chooseOperation.upper())
