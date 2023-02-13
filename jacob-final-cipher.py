@@ -115,7 +115,7 @@ def myLogo():
     print("    \ \/ _` |/ __/ _ \| '_ \   / /  | |/ _ \| | | / __|/ _ \ ")
     print(" /\_/ / (_| | (_| (_) | |_) | / /___| | (_) | |_| \__ \  __/ ")
     print(" \___/ \__,_|\___\___/|_.__/  \____/|_|\___/ \__,_|___/\___| ")
-    print("Dedicated to Peter Zlomek and Harely Alderson III")
+    print("Dedicated to Peter Zlomek and Harley Alderson III")
 
 
 # --- Function to Defang date time ---
