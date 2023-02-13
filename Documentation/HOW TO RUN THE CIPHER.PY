@@ -57,7 +57,7 @@
 #       you had previously used in the encryption step
 
 
-# 6) Then it will move on to the subsitution function and ask you for the offset you had set
+# 6) Then it will move on to the substitution function and ask you for the offset you had set
 
 
 # 7) Finally, it will print out your original plaintext you had encrypted!

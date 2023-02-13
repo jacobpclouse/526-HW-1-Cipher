@@ -1,6 +1,6 @@
 # 526-HW-1-Cipher
 > My own cryptographic cipher based off of the 1st homework issued - 526 Cryptography - Spring 2023 
-> - Started on 1/28/2023!
+> Video walkthrough of this code: https://youtu.be/ZLbgEE1HJHE
 
 ## Objectives for this Homework:
 Design and implement your own (new) encryption scheme that uses the three operations widely used in classical cryptography: *Substitution*, *Transposition* and *Product*. 
