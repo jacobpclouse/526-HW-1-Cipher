@@ -281,7 +281,7 @@ def decrypt_substitution(input_ciphertext):
     return plainText
 
 
-# --- Function to ENCRYPT a simple transposition cipher --- do a custom number of rails
+# --- Function to ENCRYPT a simple transposition cipher --- 4 rails in Matrix
 def encrypt_transposition(input_plaintext):
     print("\nSimple Transposition has been activated!\n")
 
@@ -354,7 +354,7 @@ def encrypt_transposition(input_plaintext):
     return outbound_ciphertext
 
 
-# --- Function to DECRYPT a simple substitution cipher --- do a custom number of rails
+# --- Function to DECRYPT a simple transposition cipher --- 4 rails in Matrix
 def decrypt_transposition(input_ciphertext):
     print("\nDecrypt Transposition has been activated!\n")
 
