@@ -6,13 +6,14 @@
 \usepackage[margin=0.5in]{geometry}
 %\usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage[utf8]{inputenc}
 
 
 \begin{document}
 	
 \maketitle	
 	
-\section{\underline{ - Question 1a Answer:}}
+\section{\underline{ - Question 1a Answer: }}
 First of all, this IS breakable. Here is my explanation of why: \\
 
 For my First name: J A C O B, I found that the combine total is 9 + 0 + 2 + 14 + 1. (9 + 0 + 2 + 14 + 1) is equal to 26, so we use (26) mod 26 which is equal to 0. So in C1 = (a * P1 + b) mod 26, C1 is equal to 0 (for the most common letter E). E is normally valued at 4 in plaintext. \newline
@@ -68,7 +69,7 @@ This is equal to 17, which is the value we calculated previously. So it works!
 \\
 \\
 \\
-\section{\underline{ - Question 1b Answer: (NEED TO ASK)}}
+\section{\underline{ - Question 1b Answer: }}
 \iffalse
 COMMENT:
 1b) if it it is part of the key, than it is not solvable
@@ -99,19 +100,22 @@ The substitution section is a spin on the classic Caesar/Affine cipher we have g
 The transposition section is loosely based off of the row transposition cipher. The user gives us input, that input is then stored into a 2D matrix and then they choose a key for this matrix. For simplicity's sake, I limited my cipher to have 4 columns in total. This would potentially cut down on the security of the algorithm, but combining this section with the other two more than makes up for it. We receive the substitution ciphertext directly from the code and then move it into our 2D matrix. The length of the plaintext has to be a multiple of 4, so we have to add padding if it is not. We then query the user to give us the column order key by providing us with a combination of 1,2,3 and 4. This is then used to reorganize the matrix and transpose it back into a string, giving us our transposition ciphertext. The only thing left to do is the \textbf{one time pad section}.\newline
 What makes this cipher truly secure is the one time pad section. The one time pad as a concept was created over 100 years ago and it is still being used in cryptography to this very day because it is so secure. We use our transposition ciphertext as the input to our one time pad function and it determines the number its length. It then goes and generates a random value between 0 and 9 for each character. This gets us a string of numbers the same length of our key. We then combine this key with our plaintext using ord() operations. This should only be breakable if you have the specific key that goes along with your ciphertext. Otherwise, this ensures the security of the full cipher. Our cipher and key are stored as pickle objects and printed out in our terminal. Separate the key from the cipher, and it should be pretty dang secure. \newline
 \newline
-To decrypt our cipher, all we need to do is reverse our process. First, we start off with the one time pad section, you just need to provide the pickle files for the key and the ciphertext. It will open up the pickle files and reverse the operation (done the same way you encrypted them). This is followed by the transposition section. The output from the one time pad decrypt is fed into the transposition decrypt function, all it needs from you is the column combination key that you set when you encrypted it. Once you provide that, it will rearrange the columns back to their decrypted state. But we are not done, we just have to do the substitution cipher decrypt. The output from the transposition decrypt is fed once again into the substitution cipher decrypt function, all we need to do is provide it the offset that you originally set during the encryption. And, just like that, we are done with the decryption!
+To decrypt our cipher, all we need to do is reverse our process. First, we start off with the one time pad section, you just need to provide the pickle files for the key and the ciphertext. It will open up the pickle files and reverse the operation (done the same way you encrypted them). This is followed by the transposition section. The output from the one time pad decrypt is fed into the transposition decrypt function, all it needs from you is the column combination key that you set when you encrypted it. Once you provide that, it will rearrange the columns back to their decrypted state. But we are not done, we just have to do the substitution cipher decrypt. The output from the transposition decrypt is fed once again into the substitution cipher decrypt function, all we need to do is provide it the offset that you originally set during the encryption. And, just like that, we are done with the decryption!\newline
+
 %When you combine all of these into one, you get your product cipher!
-\section{\underline{ - Question 2a Answer (NEED TO ASK):}}
+\section{\underline{ - Question 2a Answer: }}
 %(a) breaking your algorithm is going to require coding effort (i.e., your algorithm cannot be broken by using pen and paper).
 I would wager that this algorithm would be very hard to break with just pen and paper. Even if this was just the substitution and the transposition section, it would not be fun to crack. Combining two ciphers together helps to defuse the output, making it harder for a potential attacker to brute force the output. You can use frequency analysis to see which letters occur most often (since a letter will not have multiple outputs), so the first part can be cracked. \newline
-\textbf{BUT} where this cipher truly begins to shine is in the last section: the one time pad section. This section enables letters to lead multiple potential outputs. And, as long as you use truly random keys, no two combinations will lead to exactly the same output (we can try encrypting the same word twice and we will get two different outputs). Unless you know the key, you shouldn't be able break this with pen and paper.
+\textbf{BUT} where this cipher truly begins to shine is in the last section: the one time pad section. This section enables letters to lead multiple potential outputs. And, as long as you use truly random keys, no two combinations will lead to exactly the same output (we can try encrypting the same word twice and we will get two different outputs). Unless you know the key, you shouldn't be able break this with pen and paper.\newline
+Lets look at an example to try and analyze it by encrypting my first and last names: \textbf{jacobclouse}. We would start off with the substitution portion, lets use an offset key of 4. We get an output of "\textbf{negsfgpsywi}" as the encrypted output, this would be simple to break as each letter has only one corresponding output (ex: both 'o's in my name correspond to 's'). If we used a known plaintext attack, this section isn't going to stand up well. Then we move on to the transposition section, lets choose an order of 4,3,2,1. This gives us an output of "\textbf{ss gpiegwnfy}", so it certainly doesn't look like my name anymore. Normally, if we just did the transposition cipher by itself, the output would be much easier to reverse engineer with a plaintext attack (especially if there were only a few columns in the matrix). However, since we first did a substitution encryption before doing the transposition, it becomes MUCH harder to see what the original message inside it. And yet, this is still crack-able, even if it is not so easily done. Next we have the One time pad, and this doesn't take any input from the user. It gets the length of my name in cipher text form (which is 12 characters), and it generates a 12 character length string of random numbers (in this case it was '\textbf{145662785460}'). It then use the XOR operation to combine this with my previous cipher text, making the array: "\textbf{['B', 'G', 'NAK', 'Q', 'F', '[', 'R', '\_', 'B', 'Z', 'P', 'I']}". The only way you can get this is by using the original, randomly generated key with it. Now, computers do generate PSEUDO-random numbers, so you could theoretically  attack the random number generator within the computer system itself, but that would be a huge undertaking. 
 
-\section{\underline{ - Question 2b Answer: (NEED TO ASK)}}
+\section{\underline{ - Question 2b Answer: }}
 %(b) your algorithm is secure against any two cryptanalytic attacks.
 Two Attacks that my cipher is secure against:
 \begin{itemize}
 	\item \textbf{Ciphertext-Only Analysis: }As stated before, you can't break this cipher with frequency/statistical analysis because of the one time pad. One letter can have multiple outputs and multiple letters can share the same output. It is very hard to break unless you have the key.
-	\item \textbf{Chosen-Plaintext Analysis: }Based off of the different combinations of substitution, transposition and one time pad sections, it would be near impossible to reverse engineer the key. Just because of the one time pad alone with its one off random key, you should only be able to get decipher this if you already have the key. Add to that the complexity that the substitution and transposition ciphers add on top and it become a momentous undertaking.   
+	\item \textbf{Chosen-Plaintext Analysis: }Based off of the different combinations of substitution, transposition and one time pad sections, it would be near impossible to reverse engineer the key. Just because of the one time pad alone with its one off random key, you should only be able to get decipher this if you already have the key. Add to that the complexity that the substitution and transposition ciphers add on top and it become a momentous undertaking. Plaintext messages will generate with entirely different outputs depending on the combination of substitution offset, transposition order, and the random number generated within the one time pad.
+	
 \end{itemize}
 
 \end{document}
